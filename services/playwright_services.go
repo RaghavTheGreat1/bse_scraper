@@ -6,7 +6,14 @@ import (
 	"github.com/playwright-community/playwright-go"
 )
 
+var PlaywrightContext playwright.BrowserContext
+
 func InitializePlaywright() playwright.BrowserContext {
+	err := playwright.Install()
+	if err != nil {
+		log.Fatalf("could not install playwright: %v", err)
+	}
+
 	pw, err := playwright.Run(
 		&playwright.RunOptions{},
 	)
@@ -28,14 +35,6 @@ func InitializePlaywright() playwright.BrowserContext {
 
 	if err != nil {
 		log.Fatalf("could not create context: %v", err)
-	}
-	defer context.Close()
-
-	if err = browser.Close(); err != nil {
-		log.Fatalf("could not close browser: %v", err)
-	}
-	if err = pw.Stop(); err != nil {
-		log.Fatalf("could not stop Playwright: %v", err)
 	}
 
 	return context
