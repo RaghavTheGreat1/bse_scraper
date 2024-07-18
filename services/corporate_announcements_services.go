@@ -46,7 +46,7 @@ func ExtractCorporateAnnouncements(ctx playwright.BrowserContext, pages int) (da
 	}
 
 	fmt.Println(len(data))
-	return data, currentPage, nil
+	return data, currentPage - 1, nil
 
 }
 
