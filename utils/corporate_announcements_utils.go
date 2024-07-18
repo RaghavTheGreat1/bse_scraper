@@ -32,7 +32,7 @@ func ExtractTimings(text string) (string, string, string, error) {
 	text = regexp.MustCompile(`\s+`).ReplaceAllString(text, " ")
 
 	// Define the regex pattern without asterisks
-	pattern := `Exchange Received Time ([\d-]+ [\d:]+) Exchange Disseminated Time ([\d-]+ [\d:]+) Time Taken ([\d:]+)`
+	pattern := `(?:Exchange Received Time\*\* (.*?)\*\*)?(?:Exchange Disseminated Time\*\* (.*?)\*\*)?(?:Time Taken\*\* (.*?)\*\*)?`
 	re := regexp.MustCompile(pattern)
 
 	// Find matches in the text

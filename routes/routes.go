@@ -7,5 +7,5 @@ import (
 
 func InitializeRoutes(r *gin.Engine) {
 
-	r.GET("/corporate_announcements", controllers.GetCorporateAnnouncementsController)
+	r.POST("/corporate_announcements", controllers.GetCorporateAnnouncementsController)
 }

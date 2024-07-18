@@ -22,7 +22,8 @@ func InitializePlaywright() playwright.BrowserContext {
 	}
 	browser, err := pw.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
 		// Headless: playwright.Bool(false), // Run in headful mode
-		Args: []string{"--disable-blink-features=AutomationControlled"},
+		Args:    []string{"--disable-blink-features=AutomationControlled"},
+		Timeout: playwright.Float(0),
 	})
 	if err != nil {
 		log.Fatalf("could not launch browser: %v", err)
